@@ -10,5 +10,11 @@
     {% else %}
         <a href="{{url_for('index')}}"> Ir a Incio</a>
     {% endif %}
+
+    <ul>
+        {% for todo in todos %}
+        <li>todo</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
