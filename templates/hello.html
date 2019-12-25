@@ -5,6 +5,10 @@
     <title>Hello</title>
 </head>
 <body>
-    <h1>Hello world, tu IP es {{user_ip}} </h1>
+    {% if user_ip %}
+        <h1>Hello world, tu IP es {{user_ip}} </h1>
+    {% else %}
+        <a href="{{url_for('index')}}"> Ir a Incio</a>
+    {% endif %}
 </body>
 </html>
