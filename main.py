@@ -17,6 +17,7 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Enviar')
 
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html', error=error)
@@ -37,7 +38,7 @@ def index():
     return response
 
 
-@app.route('/hello')
+@app.route('/hello', methods=['GET', 'POST'])
 def hello():
     user_ip = session.get('user_ip')
     login_form = LoginForm()
