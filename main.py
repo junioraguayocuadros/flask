@@ -3,11 +3,9 @@ import unittest
 from flask import request, make_response, redirect, render_template, session
 
 from app import create_app
-from app.firestore_service import get_users
+from app.firestore_service import get_users, get_todos
 
 app = create_app()
-
-todos = ['Comprar cafe', 'Enviar solicitud de compra', 'Entregar video del producto']
 
 
 @app.cli.command()
@@ -43,7 +41,7 @@ def hello():
     username = session.get('username')
     context = {
         'user_ip': user_ip,
-        'todos': todos,
+        'todos': get_todos(username),
         'username': username,
     }
 
