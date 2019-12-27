@@ -3,6 +3,7 @@ import unittest
 from flask import request, make_response, redirect, render_template, session
 
 from app import create_app
+from app.firestore_service import get_users
 
 app = create_app()
 
@@ -45,5 +46,10 @@ def hello():
         'todos': todos,
         'username': username,
     }
+
+    users = get_users()
+    for user in users:
+        print(user.id)
+        print(user.to_dict()['password'])
 
     return render_template('hello.html', **context)
